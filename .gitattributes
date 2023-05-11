@@ -5,3 +5,6 @@
 *.md filter=lfs diff=lfs merge=lfs -text
 *.html filter=lfs diff=lfs merge=lfs -text
 *.txt filter=lfs diff=lfs merge=lfs -text
+*.gitignore filter=lfs diff=lfs merge=lfs -text
+*.bib filter=lfs diff=lfs merge=lfs -text
+/tex/report filter=lfs diff=lfs merge=lfs -text
