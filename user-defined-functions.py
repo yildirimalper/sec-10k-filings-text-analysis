@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4a664dae8d6159d3379a28107fd0e19f46503e678de5b079a4ed4aa876c85948
-size 521
+def remove_stopwords(text):
+    """
+    Remove stopwords and lowerize words in a text.
+
+    Parameters
+    ----------
+    text : str
+        Text to remove stopwords from.
+    
+    Returns
+    -------
+    str
+
+    Notes
+    -----
+    This function can be used with the pd.Series.apply() method.
+    Example usage: df['Clean Data'] = df['Text'].apply(remove_stopwords)
+    """
+    tokens = nltk.word_tokenize(text)
+    filtered = [token for token in tokens if token.lower() not in stop_words]
+    return ' '.join(filtered)

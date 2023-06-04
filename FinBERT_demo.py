@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:964871658771de8eb75a4b201191d09a4f1cd6e6372819afe38c18308d1a8633
-size 798
+# ! for Google Colab, but we will store these in environment.yml and requirements.txt
+# !pip install transformers
+# !pip install torch
+# !pip install xformers
+
+from transformers import BertTokenizer, BertForSequenceClassification, pipeline
+
+finbert = BertForSequenceClassification.from_pretrained("ProsusAI/finbert")
+tokenizer = BertTokenizer.from_pretrained("ProsusAI/finbert")
+
+nlp = pipeline("sentiment-analysis", model=finbert, tokenizer=tokenizer)
+
+sentences = ["there is a shortage of capital, and we need extra funding",
+             "profits are flat",
+             "the company is doing well, and we are making money"]
+
+results = nlp(sentences)
+
+# ---------------------------
+
+tokens =tokenizer.encode_plus(txt, add_special_tokens = False, return_tensors = 'pt')
+print(len(tokens))
+tokens
