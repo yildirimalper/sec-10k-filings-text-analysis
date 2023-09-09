@@ -1,0 +1,42 @@
+name: sentiment-10k-filings
+channels:
+  - huggingface
+  - pytorch
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+  - jupyterlab
+  - ipywidgets
+
+  # basics
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - seaborn
+
+  # sklearn
+  - scikit-learn
+  - scikit-image
+
+  # pytorch
+  - pytorch-cpu
+  - torchtext
+  - torchvision-cpu
+
+  # jax/flax
+  - jax
+  - jaxlib
+  - flax
+
+  # huggingface
+  - transformers
+  - tokenizers
+  - datasets
+  - sentencepiece
+
+  - pip
+  - pip:
+    - huggingface_hub[cli]
+    - sec_api
