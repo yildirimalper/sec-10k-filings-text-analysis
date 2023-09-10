@@ -29,7 +29,7 @@
 To clone this repository in your local machine,
 
 ```shell
-git clone https://github.com/iame-uni-bonn/final-project-yildirimalper
+git clone https://github.com/yildirimalper/sec-10k-filings-text-analysis
 ```
 
 After cloning repository, by using the `environment.yml` file, you can recreate the exact environment required for the project with:
@@ -45,7 +45,7 @@ The **Scraping and Cleaning SEC Filings** part will not work without a valid SEC
 
 In the **Fine-Tuning a Model** part, "yiyanghkust/finbert-pretrain" was fine-tuned step-by-step using the `financial_phrasebank` dataset. 
 
-In the third part, the "yiyanghkust/finbert-pretrain" and fine-tuned FinBERTs are implemented over scraped SEC 10-K filings and `financial_phrasebank` respectively. In the last part, the last hidden states of `financial_phrasebank` are obtained and feature extraction models with Random Forest and a Neural Network are developed and implemented.
+In the third part, the "yiyanghkust/finbert-pretrain" and fine-tuned FinBERT are implemented over scraped SEC 10-K filings and `financial_phrasebank` respectively. In the last part, the last hidden states of `financial_phrasebank` are obtained and feature extraction models with Random Forest Classifier and a Neural Network are developed and implemented.
 
 Note that the `filings_url.py` file contains a code chunk that retrieves 400 filings URLs, and these URLs, which are scraped for the project, are stored in the `filings_url.txt` file.
 
@@ -73,7 +73,7 @@ Both untuned and fine-tuned FinBERT models iterated over the SEC 10-K filings yi
 | FinBERT - untuned                               | 0.87         |
 | FinBERT - fine-tuned                            | 0.92         |
 | Feature Extraction via Random Forest Classifier | 0.79         |
-| Feature Extraction via Vanilla Neural Network   | 0.90         |
+| Feature Extraction via Vanilla Neural Network   | 0.89         |
 
 </div>
 
@@ -176,7 +176,7 @@ Both untuned and fine-tuned FinBERT models iterated over the SEC 10-K filings yi
 
 **Answer:** It is not a good idea since the state-of-the-art technology for language modelling tasks were LSTM-RNNs, in other words, Transformer models (introduced in 2017) were not developed yet. Therefore, with a blogpost from 2015, I could not use a specialized language model İn Hugging Face :hugs: in my final project such as FinBERT.
 
-***21.** Do you agree with the following sentence: To get the best model performance, you should train a model from scratch in Pytorch so you can influence every step of the process.*
+***21.** Do you agree with the following sentence: To get the best model performance, you should train a model from scratch in PyTorch so you can influence every step of the process.*
 
 **Answer:** Not necessarily. Using transfer learning, that is, using a pre-trained model and fine-tuning it for a certain purpose, may lead better model performance with less computational costs compared to training a model from scratch in PyTorch.
 
@@ -186,13 +186,13 @@ Both untuned and fine-tuned FinBERT models iterated over the SEC 10-K filings yi
 
 ***23.** What is the vanishing gradient problem and how does it affect training?*
 
-**Answer:** In a model with multiple layers and activation function that maps large input space into smaller space such as sigmoid, the gradients (derivatives of the loss function) would get exponentially smaller with propagation. This, in turn, affects training adversely since the vanishing gradients causes significantly less updates in model's weights and biases.
+**Answer:** In a model with an activation function that maps large input space into smaller space such as `sigmoid` or `tanh`, the gradients (derivatives of the loss function) would get exponentially smaller during backpropagation. This, in turn, affects training adversely since the vanishing gradients causes significantly less updates in model's weights and biases, i.e., slower convergence.
 
 ***24.** Which model has a longer memory: RNN or Transformer?*
 
 **Answer:** It is clear that Transformer models have longer memory than Recurrent Neural Networks. It is one of the drawbacks of Recurrent Neural Networks on long sequences such that LSTM models developed to improve this thereafter.
 
-***25.** What is the fundamental component of the transformer architecture?*
+***25.** What is the fundamental component of the Transformer architecture?*
 
 **Answer:** Attention mechanism is the fundamental component of the transformer architecture such that the model assigns different words a relative importance (or namely, attention) to each other in a sequence. Attention mechanism significanlty improves the task of obtaining contextual information, therefore, is very prevalent in natural language processing tasks.
 
@@ -200,6 +200,24 @@ Both untuned and fine-tuned FinBERT models iterated over the SEC 10-K filings yi
 
 ## References <a id="references"/>
 
-1. Ke, Z. T., Kelly, B. T., & Xiu, D. (2019). *Predicting returns with text data* (No. w26186). National Bureau of Economic Research.
+1. Araci, D. (2019). *FinBERT: Financial Sentiment Analysis with Pre-trained Language Models*. arXiv preprint arXiv:1908.10063.
 
-2. Ravula, S. (2021). *Text analysis in financial disclosures*. arXiv preprint arXiv:2101.04480.
+2. DeSola, V., Hanna, K., & Nonis, P. (2019). *FinBERT: Pre-trained Model on SEC Filings for Financial Natural Language Tasks*. University of California.
+
+3. Devlin, J., Chang, M. W., Lee, K., & Toutanova, K. (2018). *BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding*. arXiv preprint arXiv:1810.04805.
+
+4. Fama, E. F. (1970). *Efficient Capital Markets: A Review of Theory and Empirical Work*. The Journal of Finance, 25(2), 383-417.
+
+5. Huang, A. H., Wang, H., & Yang, Y. (2023). *FinBERT: A Large Language Model for Extracting Information From Financial Text*. Contemporary Accounting Research, 40(2), 806-841.
+
+6. Ke, Z. T., Kelly, B. T., & Xiu, D. (2019). *Predicting Returns With Text Data* (No. w26186). National Bureau of Economic Research.
+
+7. King, R. G., & Levine, R. (1993). *Finance and Growth: Schumpeter Might Be Right*. The Quarterly Journal of Economics, 108(3), 717-737.
+
+8. Levine, R. (1997). *Financial Development and Economic Growth: Views and Agenda*. Journal of Economic Literature, 35(2), 688-726.
+
+9. Ravula, S. (2021). *Text analysis in financial disclosures*. arXiv preprint arXiv:2101.04480.
+
+10. Tao, J., Deokar, A. V., & Deshmukh, A. (2018). *Analysing Forward-Looking Statements in Initial Public Offering Prospectuses: A Text Analytics Approach*. Journal of Business Analytics, 1(1), 54-70.
+
+11. Theil, C. K., Štajner, S., & Stuckenschmidt, H. (2018, July). *Word Embeddings-Based Uncertainty Detection in Financial Disclosures*. In Proceedings of the First Workshop on Economics and Natural Language Processing (pp. 32-37).
