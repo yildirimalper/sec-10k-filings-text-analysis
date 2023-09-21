@@ -1,4 +1,3 @@
-# Ignore specific files in the "data" folder
 data/filings.gzip
 data/filings.pkl
 data/
